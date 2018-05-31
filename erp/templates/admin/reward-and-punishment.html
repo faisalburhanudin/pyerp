@@ -1,0 +1,87 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}
+Reward and Punishment
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+            <tr>
+                <th scope="col">Employee</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Mark</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a type="button" class="btn btn-primary"
+                           href="/admin/employee/reward?id=">reward</a>
+                        <a type="button" class="btn btn-danger"
+                           href="/admin/employee/delete?id">punish</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List of Reward
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Gaji Tambahan</a>
+                    <a href="#" class="list-group-item">Cuti Tambahan</a>
+                    <a href="#" class="list-group-item">Kenaikan Jabatan</a>
+                </div>
+                <!-- /.list-group -->
+                <a href="#" class="btn btn-default btn-block">Add new reward</a>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">List of Punishment</div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Potong Gaji</a>
+                    <a href="#" class="list-group-item">Potong Cuti</a>
+                </div>
+                <!-- /.list-group -->
+                <a href="#" class="btn btn-default btn-block">Add new punishment</a>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<!-- DataTables JavaScript -->
+<script src="/static/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/static/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="/static/admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+
+
+
+
+
+
+</script>
+{% endblock %}

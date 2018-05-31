@@ -32,6 +32,11 @@ def presence():
     return render_template('admin/presence.html')
 
 
+@bp.route('/reward-and-punishment')
+def reward_and_punishment():
+    return render_template('admin/reward-and-punishment.html')
+
+
 @bp.route('/employee')
 def employee():
     users = Users.query.all()
