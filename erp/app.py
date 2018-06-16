@@ -1,5 +1,5 @@
 from flask import Flask
-from erp.view import admin
+from erp.view import admin, employee
 from erp.model import db
 from flask_login import LoginManager
 from erp.model import Users
@@ -21,7 +21,9 @@ def load_user(user_id):
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
 app.register_blueprint(admin.bp)
+app.register_blueprint(employee.bp)
 
 db.init_app(app)
 login_manager.init_app(app)
