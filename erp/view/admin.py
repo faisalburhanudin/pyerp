@@ -6,7 +6,7 @@ bp = Blueprint("admin", __name__, url_prefix='/admin')
 
 @bp.route('/')
 def admin():
-    return render_template('admin/home.html')
+    return redirect('/admin/employee')
 
 
 @bp.route('/login', methods=['GET', 'POST'])
