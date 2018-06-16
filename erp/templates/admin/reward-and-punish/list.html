@@ -15,8 +15,9 @@ Reward and Punishment
             </tr>
             </thead>
             <tbody>
+            {% for user in users %}
             <tr>
-                <td>Mark</td>
+                <td>{{ user.username }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a type="button" class="btn btn-primary"
@@ -26,6 +27,7 @@ Reward and Punishment
                     </div>
                 </td>
             </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>

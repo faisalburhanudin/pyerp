@@ -34,7 +34,11 @@ def presence():
 
 @bp.route('/reward-and-punishment')
 def reward_and_punishment():
-    return render_template('admin/reward-and-punish/list.html')
+    users = Users.query.all()
+    return render_template(
+        'admin/reward-and-punish/list.html',
+        users=users
+    )
 
 
 @bp.route('/add-reward')
