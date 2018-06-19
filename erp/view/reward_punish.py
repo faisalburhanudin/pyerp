@@ -8,9 +8,14 @@ bp = Blueprint('reward_punish', __name__, url_prefix='/admin/reward-punish')
 @bp.route('/')
 def reward_and_punishment():
     users = Users.query.all()
+    rewards = RewardPunish.query.filter_by(type=1).all()
+    punishments = RewardPunish.query.filter_by(type=2).all()
+
     return render_template(
         'admin/reward-and-punish/list.html',
-        users=users
+        users=users,
+        rewards=rewards,
+        punishments=punishments
     )
 
 
@@ -31,6 +36,18 @@ def add_reward():
     return render_template('admin/reward-and-punish/add-reward.html')
 
 
-@bp.route('/add-punish')
+@bp.route('/add-punish', methods=['GET', 'POST'])
 def add_punish():
+    if request.method == "POST":
+        name = request.form.get("name")
+
+        rp = RewardPunish()
+        rp.name = name
+        rp.type = 2
+
+        db.session.add(rp)
+        db.session.commit()
+
+        return redirect("/admin/reward-punish")
+
     return render_template('admin/reward-and-punish/add-punish.html')

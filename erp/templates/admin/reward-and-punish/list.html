@@ -39,9 +39,9 @@ Reward and Punishment
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Gaji Tambahan</a>
-                    <a href="#" class="list-group-item">Cuti Tambahan</a>
-                    <a href="#" class="list-group-item">Kenaikan Jabatan</a>
+                    {% for reward in rewards %}
+                    <a href="#" class="list-group-item">{{ reward.name }}</a>
+                    {% endfor %}
                 </div>
                 <!-- /.list-group -->
                 <a href="/admin/reward-punish/add-reward" class="btn btn-default btn-block">Add new reward</a>
@@ -54,8 +54,9 @@ Reward and Punishment
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Potong Gaji</a>
-                    <a href="#" class="list-group-item">Potong Cuti</a>
+                    {% for punish in punishments %}
+                    <a href="#" class="list-group-item">{{ punish.name }}</a>
+                    {% endfor %}
                 </div>
                 <!-- /.list-group -->
                 <a href="/admin/reward-punish/add-punish" class="btn btn-default btn-block">Add new punishment</a>
@@ -79,6 +80,7 @@ Reward and Punishment
             responsive: true
         });
     });
+
 
 
 
