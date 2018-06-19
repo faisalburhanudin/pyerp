@@ -36,10 +36,28 @@ def employee_add():
     return render_template('admin/employee/new.html')
 
 
-@bp.route('/edit')
+@bp.route('/edit', methods=["GET", "POST"])
 def employee_edit():
+    if request.method == "POST":
+        user_id = request.form.get('id')
+        user = Users.query.filter_by(id=user_id).first()
+
+        username = request.form.get("username")
+        email = request.form.get("email")
+        role = request.form.get("role")
+
+        user.username = username
+        user.email = email
+        user.role = role
+
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect('/admin/employee')
+
     user_id = request.args.get('id')
     user = Users.query.filter_by(
         id=user_id
     ).first()
+
     return render_template('admin/employee/edit.html', user=user)
