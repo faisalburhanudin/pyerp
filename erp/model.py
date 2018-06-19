@@ -22,3 +22,9 @@ class Users(db.Model, UserMixin):
 
     def validate_password(self, password):
         return bcrypt.check_password_hash(self.password, password)
+
+
+class RewardPunish(db.Model):
+    id = Column(Integer, primary_key=True)
+
+    name = Column(String(20))

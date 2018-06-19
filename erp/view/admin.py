@@ -30,22 +30,3 @@ def login():
 @bp.route('/presence')
 def presence():
     return render_template('admin/presence.html')
-
-
-@bp.route('/reward-and-punishment')
-def reward_and_punishment():
-    users = Users.query.all()
-    return render_template(
-        'admin/reward-and-punish/list.html',
-        users=users
-    )
-
-
-@bp.route('/add-reward')
-def add_reward():
-    return render_template('admin/reward-and-punish/add-reward.html')
-
-
-@bp.route('/add-punish')
-def add_punish():
-    return render_template('admin/reward-and-punish/add-punish.html')

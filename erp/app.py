@@ -1,5 +1,5 @@
 from flask import Flask
-from erp.view import admin, employee
+from erp.view import admin, employee, reward_punish
 from erp.model import db
 from flask_login import LoginManager
 from erp.model import Users
@@ -24,6 +24,7 @@ app.config.from_object(Config)
 
 app.register_blueprint(admin.bp)
 app.register_blueprint(employee.bp)
+app.register_blueprint(reward_punish.bp)
 
 db.init_app(app)
 login_manager.init_app(app)
