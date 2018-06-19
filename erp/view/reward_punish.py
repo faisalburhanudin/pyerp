@@ -21,6 +21,7 @@ def add_reward():
 
         rp = RewardPunish()
         rp.name = name
+        rp.type = 1
 
         db.session.add(rp)
         db.session.commit()

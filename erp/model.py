@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Enum
 from erp.auth import bcrypt
 
 db = SQLAlchemy()
@@ -27,4 +27,6 @@ class Users(db.Model, UserMixin):
 class RewardPunish(db.Model):
     id = Column(Integer, primary_key=True)
 
-    name = Column(String(20))
+    name = Column(String(20), nullable=False)
+
+    type = Column(Integer, nullable=False)
