@@ -1,6 +1,8 @@
+import os
+from flask import current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
-from sqlalchemy import Column, Integer, String, Enum
+from sqlalchemy import Column, Integer, String, Date
 from erp.auth import bcrypt
 
 db = SQLAlchemy()
@@ -30,3 +32,29 @@ class RewardPunish(db.Model):
     name = Column(String(20), nullable=False)
 
     type = Column(Integer, nullable=False)
+
+
+class Application(db.Model):
+    id = Column(Integer, primary_key=True)
+
+    name = Column(String(45), nullable=False)
+
+    photo = Column(String(45), nullable=False)
+
+    email = Column(String(45), nullable=False)
+
+    birthday = Column(Date, nullable=False)
+
+    resume = Column(String(45), nullable=False)
+
+    year_experience = Column(Integer, nullable=False)
+
+    def set_photo(self, file):
+        filename = file.filename
+        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+        self.photo = filename
+
+    def set_resume(self, file):
+        filename = file.filename
+        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+        self.resume = filename
