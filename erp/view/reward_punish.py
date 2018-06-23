@@ -74,3 +74,25 @@ def add_punish():
         return redirect("/admin/reward-punish")
 
     return render_template('admin/reward_and_punish/add_punish.html')
+
+
+@bp.route('/edit-punish', methods=["GET", "POST"])
+def edit_punish():
+    if request.method == "POST":
+        punish_id = request.form.get("id")
+        name = request.form.get("name")
+
+        punish = RewardPunish.query.filter_by(id=punish_id).first()
+        punish.name = name
+
+        db.session.add(punish)
+        db.session.commit()
+
+        return redirect("/admin/reward-punish")
+
+    punish_id = request.args.get("id")
+    punish = RewardPunish.query.filter_by(id=punish_id).first()
+    return render_template(
+        'admin/reward_and_punish/edit_punish.html',
+        punish=punish
+    )

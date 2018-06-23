@@ -55,7 +55,7 @@ Reward and Punishment
             <div class="panel-body">
                 <div class="list-group">
                     {% for punish in punishments %}
-                    <a href="#" class="list-group-item">{{ punish.name }}</a>
+                    <a href="/admin/reward-punish/edit-punish?id={{ punish.id }}" class="list-group-item">{{ punish.name }}</a>
                     {% endfor %}
                 </div>
                 <!-- /.list-group -->
