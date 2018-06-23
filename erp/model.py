@@ -28,7 +28,7 @@ class Users(db.Model, UserMixin):
     def total_punish(self):
         return UserRewardPunish.query.join(RewardPunish).filter(
             UserRewardPunish.user_id == self.id,
-            RewardPunish.type == 0
+            RewardPunish.type == 2
         ).count()
 
     def set_password(self, password):
