@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, request, redirect
 
-from erp.model import Users, RewardPunish, db
+from erp.model import Users, RewardPunish, db, UserRewardPunish
 
 bp = Blueprint('reward_punish', __name__, url_prefix='/admin/reward-punish')
 
@@ -56,6 +56,32 @@ def edit_reward():
     return render_template(
         'admin/reward_and_punish/edit_reward.html',
         reward=reward
+    )
+
+
+@bp.route('/user-reward', methods=["POST", "GET"])
+def add_user_reward():
+    if request.method == "POST":
+        user_id = request.form.get("user_id")
+        reward_id = request.form.get("reward_id")
+
+        user_reward = UserRewardPunish()
+        user_reward.user_id = user_id
+        user_reward.reward_punish_id = reward_id
+
+        db.session.add(user_reward)
+        db.session.commit()
+
+        return redirect('/admin/reward-punish')
+
+    user_id = request.args.get("id")
+    user = Users.query.filter_by(id=user_id).first()
+    rewards = RewardPunish.query.filter_by(type=1).all()
+
+    return render_template(
+        'admin/reward_and_punish/user_reward.html',
+        user=user,
+        rewards=rewards
     )
 
 

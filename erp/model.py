@@ -58,3 +58,11 @@ class Application(db.Model):
         filename = file.filename
         file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
         self.resume = filename
+
+
+class UserRewardPunish(db.Model):
+    id = Column(Integer, primary_key=True)
+
+    user_id = Column(Integer, nullable=False)
+
+    reward_punish_id = Column(Integer, nullable=False)
