@@ -12,7 +12,7 @@ def reward_and_punishment():
     punishments = RewardPunish.query.filter_by(type=2).all()
 
     return render_template(
-        'admin/reward-and-punish/list.html',
+        'admin/reward_and_punish/list.html',
         users=users,
         rewards=rewards,
         punishments=punishments
@@ -33,7 +33,7 @@ def add_reward():
 
         return redirect("/admin/reward-punish")
 
-    return render_template('admin/reward-and-punish/add-reward.html')
+    return render_template('admin/reward_and_punish/add_reward.html')
 
 
 @bp.route('/add-punish', methods=['GET', 'POST'])
@@ -50,4 +50,4 @@ def add_punish():
 
         return redirect("/admin/reward-punish")
 
-    return render_template('admin/reward-and-punish/add-punish.html')
+    return render_template('admin/reward_and_punish/add_punish.html')
