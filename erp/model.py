@@ -2,7 +2,7 @@ import os
 from flask import current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Integer, String, Date, ForeignKey
 from erp.auth import bcrypt
 
 db = SQLAlchemy()
@@ -18,6 +18,18 @@ class Users(db.Model, UserMixin):
     role = Column(String(45))
 
     email = Column(String(45))
+
+    def total_reward(self):
+        return UserRewardPunish.query.join(RewardPunish).filter(
+            UserRewardPunish.user_id == self.id,
+            RewardPunish.type == 1
+        ).count()
+
+    def total_punish(self):
+        return UserRewardPunish.query.join(RewardPunish).filter(
+            UserRewardPunish.user_id == self.id,
+            RewardPunish.type == 0
+        ).count()
 
     def set_password(self, password):
         self.password = bcrypt.generate_password_hash(password)
@@ -63,6 +75,6 @@ class Application(db.Model):
 class UserRewardPunish(db.Model):
     id = Column(Integer, primary_key=True)
 
-    user_id = Column(Integer, nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
 
-    reward_punish_id = Column(Integer, nullable=False)
+    reward_punish_id = Column(Integer, ForeignKey('reward_punish.id'), nullable=False)
