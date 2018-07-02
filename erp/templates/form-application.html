@@ -1,89 +1,57 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'base.html' %}
 
-    <!-- Bootstrap Core CSS -->
-    <link href="/static/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css"
-          rel="stylesheet">
-
-    <title>Applications</title>
-</head>
-<body>
-<div class="container">
-    <div class="col-md-12">
-        <h1>Form Applications</h1>
-        <hr>
-        <form enctype="multipart/form-data" method="post" action="/">
-            <div class="form-group row">
-                <label for="name" class="col-sm-2 col-form-label">Nama</label>
-                <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" id="name">
-                </div>
+{% block content %}
+<div class="col-md-12">
+    <h1>Form Applications</h1>
+    <hr>
+    <form enctype="multipart/form-data" method="post" action="/">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Nama</label>
+            <div class="col-sm-10">
+                <input type="text" name="name" class="form-control" id="name">
             </div>
-            <div class="form-group row">
-                <label for="photo" class="col-sm-2 col-form-label">Photo</label>
-                <div class="col-sm-10">
-                    <input type="file" name="photo" class="form-control" id="photo">
-                </div>
+        </div>
+        <div class="form-group row">
+            <label for="photo" class="col-sm-2 col-form-label">Photo</label>
+            <div class="col-sm-10">
+                <input type="file" name="photo" class="form-control" id="photo">
             </div>
-            <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="email" name="email" class="form-control" id="email">
-                </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" name="email" class="form-control" id="email">
             </div>
-            <div class="form-group row">
-                <label for="year_experience" class="col-sm-2 col-form-label">Pengalaman Kerja</label>
-                <div class="col-sm-10">
-                    <input type="text" name="year_experience" class="form-control" id="year_experience">
-                </div>
+        </div>
+        <div class="form-group row">
+            <label for="year_experience" class="col-sm-2 col-form-label">Pengalaman Kerja</label>
+            <div class="col-sm-10">
+                <input type="text" name="year_experience" class="form-control" id="year_experience">
             </div>
-            <div class="form-group row">
-                <label for="birthday" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                <div class="col-sm-10">
-                    <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control" name="birthday" id="birthday">
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
-                        </div>
+        </div>
+        <div class="form-group row">
+            <label for="birthday" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+            <div class="col-sm-10">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control" name="birthday" id="birthday">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="resume" class="col-sm-2 col-form-label">Resume</label>
-                <div class="col-sm-10">
-                    <input type="file" name="resume" class="form-control" id="resume">
-                </div>
+        </div>
+        <div class="form-group row">
+            <label for="resume" class="col-sm-2 col-form-label">Resume</label>
+            <div class="col-sm-10">
+                <input type="file" name="resume" class="form-control" id="resume">
             </div>
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Apply</button>
-                </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Apply</button>
             </div>
+        </div>
 
-        </form>
-    </div>
+    </form>
 </div>
-
-
-<!-- jQuery -->
-<script src="/static/admin/vendor/jquery/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/static/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-
-<script>
-    $('.datepicker').datepicker({
-        format: 'Y-m-d',
-    );
-</script>
-
-</body>
-</html>
+{% endblock %}

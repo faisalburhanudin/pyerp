@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css"
+          rel="stylesheet">
+
+    <title>Applications</title>
+</head>
+<body>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+
+<!-- jQuery -->
+<script src="/static/admin/vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/static/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+    $('.datepicker').datepicker({
+        format: 'Y-m-d',
+    );
+</script>
+
+</body>
+</html>
