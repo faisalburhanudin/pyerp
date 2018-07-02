@@ -30,3 +30,8 @@ def form_application():
         db.session.commit()
 
     return render_template('form-application.html')
+
+
+@bp.route('/absence', methods=["POST", "GET"])
+def form_absence():
+    return render_template('form-absence.html')
