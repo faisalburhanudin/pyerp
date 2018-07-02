@@ -2,7 +2,7 @@ import os
 from flask import current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
-from sqlalchemy import Column, Integer, String, Date, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, ForeignKey, DateTime
 from erp.auth import bcrypt
 
 db = SQLAlchemy()
@@ -78,3 +78,11 @@ class UserRewardPunish(db.Model):
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
 
     reward_punish_id = Column(Integer, ForeignKey('reward_punish.id'), nullable=False)
+
+
+class Absence(db.Model):
+    id = Column(Integer, primary_key=True)
+
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+
+    date_time = Column(DateTime, nullable=False)

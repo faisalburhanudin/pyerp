@@ -1,8 +1,8 @@
 import datetime
 
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 
-from erp.model import Application, db
+from erp.model import Application, Users, db, Absence
 
 bp = Blueprint('home', __name__)
 
@@ -34,4 +34,22 @@ def form_application():
 
 @bp.route('/absence', methods=["POST", "GET"])
 def form_absence():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        user = Users.query.filter_by(email=email).first()
+
+        if not user.validate_password(password):
+            return redirect('/absence')
+
+        absence = Absence()
+        absence.user_id = user.id
+        absence.date_time = datetime.datetime.now()
+
+        db.session.add(absence)
+        db.session.commit()
+
+        return redirect('/absence')
+
     return render_template('form-absence.html')
