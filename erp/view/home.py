@@ -69,7 +69,10 @@ def absence_list(user_id):
         func.MONTH(Absence.date_time) == month
     ).all()
 
+    user = Users.query.filter_by(id=user_id).first()
+
     return render_template(
         'absences.html',
+        user=user,
         absences=absences
     )
