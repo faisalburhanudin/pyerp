@@ -13,6 +13,7 @@ CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'mysql://root:root@127.0.0.1/erp'
+    SQLALCHEMY_ECHO = True
 
     UPLOAD_FOLDER = os.path.join(CURRENT_DIR, 'uploads')
 

@@ -1,5 +1,6 @@
 import datetime
 
+from sqlalchemy import func
 from flask import Blueprint, render_template, request, redirect
 
 from erp.model import Application, Users, db, Absence
@@ -50,6 +51,25 @@ def form_absence():
         db.session.add(absence)
         db.session.commit()
 
-        return redirect('/absence')
+        return redirect(f'/absence/{ user.id }')
 
     return render_template('form-absence.html')
+
+
+@bp.route('/absence/<user_id>')
+def absence_list(user_id):
+    month = request.args.get("month")
+
+    if not month:
+        today = datetime.datetime.today()
+        month = today.month
+
+    absences = Absence.query.filter(
+        Absence.user_id == user_id,
+        func.MONTH(Absence.date_time) == month
+    ).all()
+
+    return render_template(
+        'absences.html',
+        absences=absences
+    )

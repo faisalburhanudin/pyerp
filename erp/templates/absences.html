@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-12">
+    <button type="button" class="btn btn-primary">Januari</button>
+    <button type="button" class="btn btn-primary">Februari</button>
+    <button type="button" class="btn btn-primary">Maret</button>
+    <button type="button" class="btn btn-primary">April</button>
+    <button type="button" class="btn btn-primary">Mei</button>
+    <button type="button" class="btn btn-primary">Juni</button>
+    <button type="button" class="btn btn-primary">Juli</button>
+    <button type="button" class="btn btn-primary">Agustus</button>
+    <button type="button" class="btn btn-primary">September</button>
+    <button type="button" class="btn btn-primary">Oktober</button>
+    <button type="button" class="btn btn-primary">November</button>
+    <button type="button" class="btn btn-primary">Desember</button>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Tanggal</th>
+            <th scope="col">Jam Presensi</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for absence in absences %}
+        <tr>
+            <th>{{ absence.date_time.day }}</th>
+            <td>{{ absence.date_time.time() }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
