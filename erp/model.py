@@ -3,6 +3,8 @@ from flask import current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from sqlalchemy import Column, Integer, String, Date, ForeignKey, DateTime
+from sqlalchemy.orm import relationship
+
 from erp.auth import bcrypt
 
 db = SQLAlchemy()
@@ -86,3 +88,5 @@ class Absence(db.Model):
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
 
     date_time = Column(DateTime, nullable=False)
+
+    user = relationship("Users")

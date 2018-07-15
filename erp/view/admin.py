@@ -25,8 +25,3 @@ def login():
             return redirect(url_next or '/admin')
 
     return render_template('admin/login.html')
-
-
-@bp.route('/presence')
-def presence():
-    return render_template('admin/presence.html')
